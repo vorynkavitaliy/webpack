@@ -1,0 +1,4 @@
+ie >= 11,
+chrome >= 30,
+iOS >= 8,
+Android >= 4
