@@ -5,6 +5,7 @@
     "private": true,
     "scripts": {
         "start": "cross-env NODE_ENV=development webpack serve --open",
+        "buildandstart": "cross-env NODE_ENV=production webpack serve --open",
         "dev": "cross-env NODE_ENV=development webpack --mode development",
         "build": "cross-env NODE_ENV=production webpack --mode production",
         "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",

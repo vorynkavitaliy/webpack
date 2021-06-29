@@ -53,6 +53,10 @@ const plugins = () => {
                     from: path.resolve(__dirname, 'src/assets/images'),
                     to: path.join(__dirname, PATHS.img),
                 },
+                {
+                    from: path.resolve(__dirname, 'src/assets/fonts'),
+                    to: path.join(__dirname, PATHS.fonts),
+                },
             ],
         }),
     ]
@@ -68,7 +72,15 @@ const cssLoaders = (extra) => {
                 publicPath: ``,
             },
         },
-        'css-loader',
+        // 'vue-style-loader',
+        {
+            loader: 'css-loader',
+            options: {
+                modules: {
+                    localIdentName: '[local]--[hash:base64:5]',
+                },
+            },
+        },
         {
             loader: 'postcss-loader',
             options: {
@@ -85,7 +97,7 @@ const cssLoaders = (extra) => {
             loaders.push({
                 loader: 'sass-resources-loader',
                 options: {
-                    resources: [path.resolve(__dirname, './src//assets/styles/styles.sass')],
+                    resources: [path.resolve(__dirname, './src/assets/styles/styles.sass')],
                 },
             })
         }
@@ -202,6 +214,15 @@ module.exports = {
             {
                 test: /\.svg$/,
                 use: ['babel-loader', 'vue-svg-loader'],
+            },
+
+            {
+                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                use: [
+                    {
+                        loader: `file-loader?name=../fonts/[name].[ext]`,
+                    },
+                ],
             },
 
             {
